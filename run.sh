@@ -10,6 +10,9 @@ npm run build
 # Remove the current ....
 rm -rf /var/www/notify-stats/
 
+# Create the webfolder
+mkdir /var/www/notify-stats
+
 # move the dist folder to ....
 mv -a ./dist/ /var/www/notify-stats/
 
