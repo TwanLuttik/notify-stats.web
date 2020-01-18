@@ -1,6 +1,8 @@
 <template>
   <div id="homeScreen">
-    <p>homescreen</p>
+    <h2>Welcome on 1st Notify.me statistics</h2>
+    <p>You can search for channels to see their statistics</p>
+
   </div>
 </template>
 
@@ -14,6 +16,7 @@ export default {
   // background: red;
   height: 100%;
   width: 100%;
+  padding-top: 30px;
 
   // @media only screen and (min-width: 700px) {
   //   max-width: 700px;

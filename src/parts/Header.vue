@@ -1,8 +1,8 @@
 <template>
   <div id="Header">
     <div class="container">
-      <input placeholder="Notify username" v-model="username" style="margin-right:15px;" type="text">
-      <button @click="searchChannel">Search</button>
+      <input placeholder="Notify username" v-model="username" style="margin-right:15px;" type="text" autocomplete="off">
+      <button @click="searchChannel" :disabled="username === ''" >Search</button>
     </div>
   </div>
 </template>
@@ -20,7 +20,14 @@ export default {
   },
   methods: {
     searchChannel() {
-      if (this.$route.name !== 'channel') this.$router.push({ name: 'channel', params: { username: this.username }});
+      if (this.$route.params.username == this.username) {
+        console.log('no')
+        return;
+      }
+      // if (this.$router.username.toLowerCase() === this.username.toLowerCase());
+      this.$router.push({ name: 'channel', params: { username: this.username }});
+
+      // TODO: if error out we need to let the user know the user doesn exist
       this.$stats.getByUsername(this.username).then((r) => {
         console.log(r)
       })
