@@ -8,6 +8,9 @@ import stats from './collections/stats.collection';
 Pulse.use(Vue);
 
 export default new Pulse({
+  config: {
+    framework: Vue
+  },
   collections: {
     stats
   },

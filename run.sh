@@ -14,7 +14,7 @@ rm -rf /var/www/notify-stats/
 mkdir /var/www/notify-stats
 
 # move the dist folder to ....
-mv -f ./dist/ /var/www/notify-stats/
+mv -f ./dist/* /var/www/notify-stats/
 
 
 echo done
