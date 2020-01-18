@@ -9,7 +9,8 @@ export default({
     getByUsername({ routes, stats }, username) {
       return new Promise((resolve, reject) => {
         routes.getByUsername(username).then((r) => {
-          stats.currentChannel = r;
+          console.log(r.data)
+          stats.currentChannel = r.data;
           resolve();
         });
       });

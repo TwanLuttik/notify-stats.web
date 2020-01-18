@@ -1,6 +1,6 @@
 <template>
   <div id="homeScreen">
-    homescreen
+    <p>homescreen</p>
   </div>
 </template>
 
@@ -11,8 +11,13 @@ export default {
 
 <style lang="scss" scoped>
 #homeScreen {
-  background: red;
+  // background: red;
   height: 100%;
   width: 100%;
+
+  // @media only screen and (min-width: 700px) {
+  //   max-width: 700px;
+  //   margin: 0 auto;
+  // }
 }
 </style>

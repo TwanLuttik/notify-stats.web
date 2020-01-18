@@ -8,6 +8,11 @@ const routes = [
     path: '/',
     name: 'home',
     component: () => import('../screens/home/homeScreen')
+  },
+  {
+    path: '/channel/:username',
+    name: 'channel',
+    component: () => import('../screens/channel/channelScreen')
   }
 ]
 
