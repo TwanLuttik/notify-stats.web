@@ -13,6 +13,11 @@ const routes = [
     path: '/channel/:username',
     name: 'channel',
     component: () => import('../screens/channel/channelScreen')
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: () => import('../screens/admin/adminScreen')
   }
 ]
 

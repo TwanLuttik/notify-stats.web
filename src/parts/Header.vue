@@ -1,7 +1,7 @@
 <template>
   <div id="Header">
     <div class="container">
-      <input placeholder="Notify username" v-model="username" style="margin-right:15px;" type="text" autocomplete="off">
+      <input placeholder="Notify username" v-model="username" style="margin-right:15px;" type="text" autocomplete="off" v-on:keyup.enter="searchChannel">
       <button @click="searchChannel" :disabled="username === ''" >Search</button>
     </div>
   </div>
@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     searchChannel() {
-      if (this.$route.params.username == this.username) {
+      if (this.$route.params.username == this.username || this.username === '') {
         console.log('no')
         return;
       }

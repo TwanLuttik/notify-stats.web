@@ -10,7 +10,7 @@ export default new Pulse({
     stats
   },
   request: {
-    baseURL: 'http://localhost:3005',
+    baseURL: 'https://api.twanluttik.com',
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Authorization': '7b286cd1-8354-4bf7-a9b7-9ec30a2f18da',
