@@ -1,7 +1,7 @@
 export default({
   routes: {
     getByUsername: (request, username) => request.get(`channel/track/username/${username}`),
-    getTop: (request) => request.get(`channel/track/top`)
+    getTop: (request) => request.get(`channel/track/top`),
   },
   data: {
     currentChannel: {},

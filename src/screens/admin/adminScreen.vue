@@ -1,16 +1,25 @@
 <template>
-  <div>
+  <div id="adminScreen">
     <p>ADMIN PANEL</p>
-    <button>LOGS</button>
+    <logList/>
   </div>
 </template>
 
 <script>
+import logList from './parts/logsList';
+
 export default {
-  
+  components: {
+    logList
+  },
+  mounted() {
+    this.$admin.getLogs();
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-
+#adminScreen {
+  padding-top: 30px;
+}
 </style>

@@ -14,10 +14,13 @@
           v-if="i != 0 && calcDifference(currentChannel.track[i].subs, currentChannel.track[(i - 1)].subs) !== null" 
           class="diff" 
           :class="{ 'minus': calcDifference(currentChannel.track[i].subs, currentChannel.track[(i - 1)].subs) < 0 }">
-          {{ calcDifference(currentChannel.track[i].subs, currentChannel.track[(i - 1)].subs) > 0? '+' : '' }}{{ calcDifference(currentChannel.track[i].subs, currentChannel.track[(i - 1)].subs) }}
+          <!-- {{ calcDifference(currentChannel.track[i].subs, currentChannel.track[(i - 1)].subs) > 0? '+' : '' }}{{ calcDifference(currentChannel.track[i].subs, currentChannel.track[(i - 1)].subs) }} -->
         </p>
       </div>
-      <p class="segment">{{ currentChannel.track[i].posts }}</p>
+      <p class="segment">{{ currentChannel.track[i].posts }}
+        <!-- {{ calcDifference(currentChannel.track[i].posts, currentChannel.track[(i - 1)].posts) > 0? '+' : '' }} -->
+        <!-- {{ calcDifference(currentChannel.track[i].posts, currentChannel.track[(i - 1)].posts) }} -->
+      </p>
       <p class="segment">{{ currentChannel.track[i].month }}</p>
     </div>
   </div>
@@ -45,10 +48,10 @@ export default {
 <style lang="scss" scoped>
 .tracks {
   margin-top: 50px;
-  border: solid 2px #3253dc;
+  border: solid 2px #476aff;
   .top-bar {
     display: flex;
-    background: #3253dc;
+    background: #476aff;
     color: white;
     font-weight: bold;
     padding: 5px;
@@ -68,7 +71,6 @@ export default {
       .diff {
         color: rgb(86, 161, 71);
         padding-left: 10px;
-        text-shadow: 0 0 3px #0000009c;
       }
       .minus {
         color: red;
@@ -77,8 +79,7 @@ export default {
    
   }
   .even {
-    background: #476aff;
-    color: white;
+    background: #f1f1f1;
   }
 }
 </style>

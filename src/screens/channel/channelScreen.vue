@@ -2,8 +2,8 @@
   <div id="channel">
     
     <div v-if="loaded && !NOT_FOUND">
-      <img class="profile"  v-if="'https://assets.notify.me/avatars/' + currentChannel.channel.channel_id + '.png'" :src="'https://assets.notify.me/avatars/' + currentChannel.channel.channel_id + '.png'">
-      <img class="profile" v-else :src="'https://assets.notify.me/avatars/' + currentChannel.channel.channel_id + '.jpg'">
+      <img class="banner" :src="currentChannel.channel.coverPhoto">
+      <img class="profile" :src="currentChannel.channel.avatar">
 
 
       <p>notify.me/{{ currentChannel.channel.username }}</p>
@@ -15,7 +15,7 @@
     </div>
 
     <div v-else-if="NOT_FOUND">
-      <p>{{ $route.params.name }} is not found</p>
+      <!-- <p>{{ $route.params.name }} is not found</p> -->
     </div>
 
   </div>
@@ -44,10 +44,9 @@ export default {
     }
   },
   mounted() {
+    console.log('channelScreen')
     this.$stats.getByUsername(this.$route.params.username).then((r) => {
-      console.log(r.error);
       if (r.error) {
-        console.log('sdas')
         this.NOT_FOUND = true
         return
       }
@@ -59,10 +58,31 @@ export default {
 
 <style lang="scss" scoped>
 #channel {
-  padding-top: 50px;
+  padding-top: 360px;
   .profile {
+    
     border-radius: 33%;
-    height: 120px;
+    height: 170px;
   }
+  .banner {
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    // width: 100%;
+    left: 0;
+    max-height: 350px;
+    width: 100%;
+    background-size: cover;
+    background-position: 50%;
+  }
+    // .gradiant {
+    //   background: -ms-linear-gradient(to top, rgba(237,237,237,0) 0%, rgba(240,240,240,0.5) 33%, rgba(243,243,243,1) 66%, rgba(246,246,246,1) 100%);
+    //   position: absolute;
+    //   top: 0;
+    //   z-index: 11;
+    //   width: 100%;
+    //   left: 0;
+    //   height: 500px;
+    // }
 }
 </style>

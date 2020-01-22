@@ -17,7 +17,17 @@ const routes = [
   {
     path: '/admin',
     name: 'admin',
-    component: () => import('../screens/admin/adminScreen')
+    component: () => import('../screens/admin/adminScreen'),
+    // children: [
+    //   {
+    //     path: 'logs',
+    //     com
+    //   }
+    // ]
+  },
+  {
+    path: '*',
+    component: () => import('../screens/notfound/NotFound')
   }
 ]
 
