@@ -12,7 +12,7 @@ export default new Pulse({
     admin
   },
   request: {
-    baseURL: 'http://localhost:3005',
+    baseURL: process.env.PROD ? 'https://api.twanluttik.com' : 'http://localhost:3005',
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Authorization': '7b286cd1-8354-4bf7-a9b7-9ec30a2f18da',
