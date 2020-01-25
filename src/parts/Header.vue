@@ -25,7 +25,6 @@ export default {
         return;
       }
       // if (this.$router.username.toLowerCase() === this.username.toLowerCase());
-
       this.$router.push({ name: 'channel', params: { username: this.username }});
     }
   }

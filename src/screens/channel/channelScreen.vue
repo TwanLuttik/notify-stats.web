@@ -2,12 +2,14 @@
   <div id="channel">
 
     <div v-if="ready">
-      <img class="banner" :src="currentChannel.channel.coverPhoto">
+      <div class="banner" :style="'background-image: url(' + currentChannel.channel.coverPhoto + ');'"></div>
+      <div class="banner-gradiant"/>
+      <!-- <img class="banner" :src="currentChannel.channel.coverPhoto"> -->
       <img class="profile" :src="currentChannel.channel.avatar">
 
-      <p>notify.me/{{ currentChannel.channel.username }}</p>
-      <p>{{ currentChannel.channel.displayName }}</p>
-      <p>{{ new Date(currentChannel.channel.created_at).toLocaleString() }}</p>
+      <!-- <p>notify.me/{{ currentChannel.channel.username }}</p> -->
+      <p style="font-size:24px;padding-top:10px;">{{ currentChannel.channel.displayName }}</p>
+      <!-- <p>{{ new Date(currentChannel.channel.created_at).toLocaleString() }}</p> -->
 
       <trackList/>
     </div>
@@ -78,22 +80,40 @@ export default {
 
 <style lang="scss" scoped>
 #channel {
-  padding-top: 360px;
+  // padding-top: 360px;
+
   .profile {
-    
-    border-radius: 33%;
+    position: relative;
+    border-radius: 100%;
     height: 170px;
+    z-index: 1;
+    border: white solid 5px;
+    margin-top: 160px;
   }
+
   .banner {
     position: absolute;
-    top: 0;
-    z-index: 10;
-    // width: 100%;
     left: 0;
-    max-height: 350px;
+    height: 250px; // set this to the banner height
     width: 100%;
+    z-index: 0;
     background-size: cover;
-    background-position: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+
+    // position: absolute;
+    // top: 0;
+    // z-index: 10;
+    // left: 0;
+    // max-height: 350px;
+    // width: 100%;
+    // background-size: cover;
+    // background-position: 50%;
+  }
+
+  .banner-gradiant {
+
   }
     // .gradiant {
     //   background: -ms-linear-gradient(to top, rgba(237,237,237,0) 0%, rgba(240,240,240,0.5) 33%, rgba(243,243,243,1) 66%, rgba(246,246,246,1) 100%);
