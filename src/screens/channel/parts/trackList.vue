@@ -9,19 +9,22 @@
 
     <div v-for="(item, i) in currentChannel.track" :key="i" class="track" :class="{ 'even': (i % 2 == 0) ? false : true }">
       <p class="segment">{{ currentChannel.track[i].created_at }}</p>
+
       <div class="segment">
         <p>{{ currentChannel.track[i].subs }}</p>
-           <p 
-          v-if="i != 0 && calcDifference(currentChannel.track[i].subs, currentChannel.track[(i - 1)].subs) !== null" 
-          class="diff" 
-          :class="{ 'minus': calcDifference(currentChannel.track[i].subs, currentChannel.track[(i - 1)].subs) < 0 }">
-          <!-- {{ calcDifference(currentChannel.track[i].subs, currentChannel.track[(i - 1)].subs) > 0? '+' : '' }}{{ calcDifference(currentChannel.track[i].subs, currentChannel.track[(i - 1)].subs) }} -->
-        </p>
+        <p v-if="currentChannel.track[i+1]" class="diff" :style="{ color: (calcDifference(currentChannel.track[i+1].subs, currentChannel.track[i].subs) > 0 ? '#56a147' : 'RED')  }" >{{ calcDifference(currentChannel.track[i+1].subs, currentChannel.track[i].subs) }} {{ test(currentChannel.track[i+1].subs, currentChannel.track[i].subs) }} </p>
+        <!-- <p> {{ ((calcDifference(currentChannel.track[i+1].subs, currentChannel.track[i].subs) > 0) ? '+' : '-') }}</p> -->
       </div>
-      <p class="segment">{{ currentChannel.track[i].posts }} 
+
+      <div class="segment">
+        <p>{{ currentChannel.track[i].posts }}</p>
+        <p v-if="currentChannel.track[i+1]" class="diff" :style="{ color: (calcDifference(currentChannel.track[i+1].posts, currentChannel.track[i].posts) > 0 ? '#56a147' : 'RED')  }" >{{ calcDifference(currentChannel.track[i+1].posts, currentChannel.track[i].posts) }} {{ test(currentChannel.track[i+1].posts, currentChannel.track[i].posts) }}</p>
+      </div>
+      <!-- :style="{ color: (calcDifference(currentChannel.track[i+1].subs, currentChannel.track[i].subs) > 0 ? '#56a147' : 'RED')  }" -->
+      <!-- <p class="segment">{{ currentChannel.track[i].posts }}  -->
         <!-- {{ calcDifference(currentChannel.track[i].posts, currentChannel.track[(i - 1)].posts) > 0? '+' : '' }} -->
         <!-- {{ calcDifference(currentChannel.track[i].posts, currentChannel.track[(i - 1)].posts) }} -->
-      </p>
+      <!-- </p> -->
       <p class="segment">{{ currentChannel.track[i].month }}</p>
     </div>
     
@@ -39,9 +42,18 @@ export default {
     }
   },
   methods: {
-    calcDifference(current, prev) {
-      if (current === prev) return null;
-      return (current - prev);
+    calcDifference(yesterday, today) {
+      if (yesterday === today) return '';
+      // if (yesterday)
+      return (today - yesterday);
+    },
+    test(yesterday, today) {
+      if (yesterday === today) return '';
+      // if (yesterday)
+      let a = today - yesterday;
+
+      if (a === 0) return '';
+      else return a > 0 ? '+' : '-';
     }
   },
 }
