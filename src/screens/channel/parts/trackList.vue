@@ -6,6 +6,7 @@
       <p>Posts</p>
       <p>Month</p>
     </div>
+
     <div v-for="(item, i) in currentChannel.track" :key="i" class="track" :class="{ 'even': (i % 2 == 0) ? false : true }">
       <p class="segment">{{ currentChannel.track[i].created_at }}</p>
       <div class="segment">
@@ -17,12 +18,13 @@
           <!-- {{ calcDifference(currentChannel.track[i].subs, currentChannel.track[(i - 1)].subs) > 0? '+' : '' }}{{ calcDifference(currentChannel.track[i].subs, currentChannel.track[(i - 1)].subs) }} -->
         </p>
       </div>
-      <p class="segment">{{ currentChannel.track[i].posts }}
+      <p class="segment">{{ currentChannel.track[i].posts }} 
         <!-- {{ calcDifference(currentChannel.track[i].posts, currentChannel.track[(i - 1)].posts) > 0? '+' : '' }} -->
         <!-- {{ calcDifference(currentChannel.track[i].posts, currentChannel.track[(i - 1)].posts) }} -->
       </p>
       <p class="segment">{{ currentChannel.track[i].month }}</p>
     </div>
+    
   </div>
 </template>
 
@@ -31,9 +33,9 @@ export default {
   name: 'trackList',
   data() {
     return {
-      ...this.mapData({
-        currentChannel: 'stats/currentChannel'
-      })
+      ...this.mapData(core => ({
+        currentChannel: core.stats.currentChannel
+      })),
     }
   },
   methods: {
@@ -47,7 +49,7 @@ export default {
 
 <style lang="scss" scoped>
 .tracks {
-  margin-top: 50px;
+  margin: 50px;
   border: solid 2px #476aff;
   .top-bar {
     display: flex;

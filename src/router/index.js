@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+import core from '../core/core'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -12,7 +14,11 @@ const routes = [
   {
     path: '/channel/:username',
     name: 'channel',
-    component: () => import('../screens/channel/channelScreen')
+    component: () => import('../screens/channel/channelScreen'),
+    beforeEnter: async (to, from, next) => {
+      // await core.stats.getByUsername(to.params.username)
+      next();
+    }
   },
   {
     path: '/admin',

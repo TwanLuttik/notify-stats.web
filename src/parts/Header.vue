@@ -25,12 +25,8 @@ export default {
         return;
       }
       // if (this.$router.username.toLowerCase() === this.username.toLowerCase());
-      this.$router.push({ name: 'channel', params: { username: this.username }});
 
-      // TODO: if error out we need to let the user know the user doesn exist
-      this.$stats.getByUsername(this.username).then((r) => {
-        console.log(r)
-      })
+      this.$router.push({ name: 'channel', params: { username: this.username }});
     }
   }
 }

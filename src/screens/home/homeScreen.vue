@@ -1,6 +1,6 @@
 <template>
   <div id="homeScreen">
-    <h2>Welcome on 1st Notify.me statistics</h2>
+    <h2>Welcome on 1st Notify.me statistics website</h2>
     <p>You can search for channels to see their statistics</p>
 
   </div>

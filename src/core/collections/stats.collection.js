@@ -4,18 +4,20 @@ export default({
     getTop: (request) => request.get(`channel/track/top`),
   },
   data: {
-    currentChannel: {},
-    top: []
+    top: [],
+    currentChannel: {}
   },
+  groups: ['channels', 'tracks'],
   actions: {
     getByUsername({ routes, stats }, username) {
+      console.log('getByUsername')
       return new Promise(async (resolve, reject) => {
-        await routes.getByUsername(username).then((r) => {
-          console.log('coll', r)
-          stats.currentChannel = r.data;
-          resolve(r);
-        }).then((r) => {
-          console.log('dsa', r)
+        routes.getByUsername(username).then(async (r) => {
+          stats.currentChannel = r.data
+          return resolve();
+        }).catch((r) => {
+          stats.currentChannel = null
+          if (r) throw r;
         });
       });
     },
