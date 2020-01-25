@@ -50,6 +50,7 @@ export default {
 
         this.$stats.getByUsername(username).then((r) => {
           this.ready = true;
+          document.title = username;
           return resolve()
         }).catch((r) => {
           if (r) throw r;
