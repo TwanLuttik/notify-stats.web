@@ -14,7 +14,7 @@ export default new Pulse({
   },
   persist: ['apis'],
   request: {
-    baseURL: process.env.NODE_ENV !== 'development' ? 'https://api.twanluttik.com' : 'http://localhost:3005',
+    baseURL: process.env.NODE_ENV !== 'development' ? 'https://api.notifystats.me' : 'http://localhost:3005',
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Authorization': '7b286cd1-8354-4bf7-a9b7-9ec30a2f18da',
