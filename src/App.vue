@@ -39,7 +39,7 @@ export default {
   display: flex;
   flex-direction: column;
   height: 100%;
-  font-size: 18px;
+  font-size: 16px;
 
   .container-view {
     margin: 0 auto;
