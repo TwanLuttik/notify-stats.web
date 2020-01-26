@@ -7,7 +7,11 @@
       <img class="profile" :src="currentChannel.channel.avatar">
 
       <!-- <p>notify.me/{{ currentChannel.channel.username }}</p> -->
-      <p style="font-size:24px;padding-top:10px;">{{ currentChannel.channel.displayName }}</p>
+      <p 
+      class="link"
+      style="font-size:24px;padding-top:10px;" 
+      @click="to('https://notify.me/' + currentChannel.channel.username)">
+      {{ currentChannel.channel.displayName }}</p>
       <!-- <p>{{ new Date(currentChannel.channel.created_at).toLocaleString() }}</p> -->
 
       <trackList/>
@@ -37,6 +41,9 @@ export default {
     }
   },
   methods: {
+    to(v) {
+      window.open(v, '_blank')
+    },
     calcDifference(current, prev) {
       if (current === prev) return null;
       return (current - prev);
@@ -124,7 +131,18 @@ export default {
     @media only screen and (min-width: 1300px) {
       border-radius: 0 0 10px 10px;
     }
+  }
+  .link {
+    cursor: pointer;
+   
+    width: fit-content;
+    margin: 0 auto;
+    font-weight: bold;
 
+    transition: color .2s ease-in-out;
+    &:hover {
+      color: #476AFF;
+    }
   }
 }
 </style>
