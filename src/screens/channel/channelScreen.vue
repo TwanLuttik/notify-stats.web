@@ -3,8 +3,7 @@
 
     <div v-if="ready">
       <div class="banner" :style="'background-image: url(' + currentChannel.channel.coverPhoto + ');'"></div>
-      <div class="banner-gradiant"/>
-      <!-- <img class="banner" :src="currentChannel.channel.coverPhoto"> -->
+
       <img class="profile" :src="currentChannel.channel.avatar">
 
       <!-- <p>notify.me/{{ currentChannel.channel.username }}</p> -->
@@ -14,7 +13,7 @@
       <trackList/>
     </div>
 
-    <div v-else>
+    <div v-else-if="currentChannel == {}">
       <p>{{ $route.params.name }} is not found</p>
     </div>
 
@@ -95,35 +94,37 @@ export default {
   .banner {
     position: absolute;
     left: 0;
-    height: 250px; // set this to the banner height
+    height: 250px;
     width: 100%;
+    z-index: 1;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    @media only screen and (min-width: 1300px) {
+      max-width: 1300px;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  .background-banner {
+    position: absolute;
+    left: -5%;
+    height: 250px;
+    width: 110%;
     z-index: 0;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    filter: blur(14px);
+    
+      border-radius: 0;
 
-
-    // position: absolute;
-    // top: 0;
-    // z-index: 10;
-    // left: 0;
-    // max-height: 350px;
-    // width: 100%;
-    // background-size: cover;
-    // background-position: 50%;
-  }
-
-  .banner-gradiant {
+    @media only screen and (min-width: 1300px) {
+      border-radius: 0 0 10px 10px;
+    }
 
   }
-    // .gradiant {
-    //   background: -ms-linear-gradient(to top, rgba(237,237,237,0) 0%, rgba(240,240,240,0.5) 33%, rgba(243,243,243,1) 66%, rgba(246,246,246,1) 100%);
-    //   position: absolute; 
-    //   top: 0;
-    //   z-index: 11;
-    //   width: 100%;
-    //   left: 0;
-    //   height: 500px;
-    // }
 }
 </style>
