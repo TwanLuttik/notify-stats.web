@@ -2,7 +2,13 @@
   <div id="homeScreen">
     <h2>Welcome to Notify statistics</h2>
     <div style="display:flex;flex-directin:column;justify-content:center;">
-      <a>Made By</a><a class="link">@TwanLuttik</a>
+      <p>Made By</p><p class="link" style="padding-left:5px;" @click="to('https://twitter.com/TwanLuttik')">@TwanLuttik</p>
+    </div>
+
+    <div style="display:flex;flex-directin:column;justify-content:center;margin-top:30px;">
+      <p>If you see any issues send me a dm on</p>
+      <p class="link" style="padding-left:5px;" @click="to('https://twitter.com/TwanLuttik')">twitter</p>
+
     </div>
 
   </div>
@@ -10,6 +16,11 @@
 
 <script>
 export default {
+  methods: {
+    to(v) {
+      window.open(v, '_blank')
+    }
+  }
 }
 </script>
 
@@ -18,7 +29,14 @@ export default {
   // background: red;
   height: 100%;
   width: 100%;
-  padding-top: 30px;
+  margin-top: 30px;
+
+  .link {
+    cursor: pointer;
+      color: #476AFF;
+    &:hover {
+    }
+  }
 
   // @media only screen and (min-width: 700px) {
   //   max-width: 700px;
