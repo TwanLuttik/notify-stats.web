@@ -2,6 +2,7 @@
   <div id="app">
     <Header/>
     <head>
+      <link rel="icon" href="./favicon.ico">
       <link rel="stylesheet" href="https://use.typekit.net/ojh1rxj.css">
     </head>
     <router-view class="container-view"/>

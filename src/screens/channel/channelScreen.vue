@@ -54,7 +54,7 @@ export default {
           return resolve()
         }).catch((r) => {
           if (r) throw r;
-        })
+        });
       })
 
     }

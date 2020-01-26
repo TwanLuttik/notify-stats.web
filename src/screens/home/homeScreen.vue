@@ -1,7 +1,9 @@
 <template>
   <div id="homeScreen">
-    <h2>Welcome on 1st Notify.me statistics website</h2>
-    <p>You can search for channels to see their statistics</p>
+    <h2>Welcome to Notify statistics</h2>
+    <div style="display:flex;flex-directin:column;justify-content:center;">
+      <a>Made By</a><a class="link">@TwanLuttik</a>
+    </div>
 
   </div>
 </template>

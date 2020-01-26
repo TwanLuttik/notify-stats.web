@@ -12,13 +12,13 @@
 
       <div class="segment">
         <p>{{ currentChannel.track[i].subs }}</p>
-        <p v-if="currentChannel.track[i+1]" class="diff" :style="{ color: (calcDifference(currentChannel.track[i+1].subs, currentChannel.track[i].subs) > 0 ? '#56a147' : 'RED')  }" >{{ calcDifference(currentChannel.track[i+1].subs, currentChannel.track[i].subs) }} {{ test(currentChannel.track[i+1].subs, currentChannel.track[i].subs) }} </p>
+        <p v-if="currentChannel.track[i+1]" class="diff" :style="{ color: (calcDifference(currentChannel.track[i+1].subs, currentChannel.track[i].subs) > 0 ? '#56a147' : 'RED')  }" >{{ test(currentChannel.track[i+1].subs, currentChannel.track[i].subs) }} {{ calcDifference(currentChannel.track[i+1].subs, currentChannel.track[i].subs) }}</p>
         <!-- <p> {{ ((calcDifference(currentChannel.track[i+1].subs, currentChannel.track[i].subs) > 0) ? '+' : '-') }}</p> -->
       </div>
 
       <div class="segment">
         <p>{{ currentChannel.track[i].posts }}</p>
-        <p v-if="currentChannel.track[i+1]" class="diff" :style="{ color: (calcDifference(currentChannel.track[i+1].posts, currentChannel.track[i].posts) > 0 ? '#56a147' : 'RED')  }" >{{ calcDifference(currentChannel.track[i+1].posts, currentChannel.track[i].posts) }} {{ test(currentChannel.track[i+1].posts, currentChannel.track[i].posts) }}</p>
+        <p v-if="currentChannel.track[i+1]" class="diff" :style="{ color: (calcDifference(currentChannel.track[i+1].posts, currentChannel.track[i].posts) > 0 ? '#56a147' : 'RED')  }" >{{ test(currentChannel.track[i+1].posts, currentChannel.track[i].posts) }} {{ calcDifference(currentChannel.track[i+1].posts, currentChannel.track[i].posts) }}</p>
       </div>
       <!-- :style="{ color: (calcDifference(currentChannel.track[i+1].subs, currentChannel.track[i].subs) > 0 ? '#56a147' : 'RED')  }" -->
       <!-- <p class="segment">{{ currentChannel.track[i].posts }}  -->
