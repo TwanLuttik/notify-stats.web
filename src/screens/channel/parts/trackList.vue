@@ -47,7 +47,7 @@ export default {
       let a = today - yesterday;
 
       if (a === 0) return '';
-      else return a > 0 ? '+' : '-';
+      else return a > 0 ? '+' : '';
     }
   },
 }
