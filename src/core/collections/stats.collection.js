@@ -17,7 +17,7 @@ export default({
           return resolve();
         }).catch((r) => {
           stats.currentChannel = null
-          if (r) throw r;
+          reject(r)
         });
       });
     },

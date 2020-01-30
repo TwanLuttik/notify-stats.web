@@ -17,8 +17,8 @@
       <trackList/>
     </div>
 
-    <div v-else-if="currentChannel == {}">
-      <p>{{ $route.params.name }} is not found</p>
+    <div v-else style="padding-top: 20px">
+      <p style="font-size: 20px;">{{ $route.params.username }} is not found</p>
     </div>
 
   </div>
@@ -54,13 +54,14 @@ export default {
 
         if (this.ready === true) return;
 
-        this.$stats.getByUsername(username).then((r) => {
-          this.ready = true;
-          document.title = username;
-          return resolve()
-        }).catch((r) => {
-          if (r) throw r;
-        });
+        this.$stats.getByUsername(username)
+          .then((r) => {
+            this.ready = true;
+            document.title = username;
+            return resolve()
+          }).catch((r) => {
+            // this.$route.push()
+          });
       })
 
     }
