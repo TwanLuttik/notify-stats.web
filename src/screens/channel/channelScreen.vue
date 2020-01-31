@@ -53,6 +53,8 @@ export default {
         console.log('LOAD')
 
         if (this.ready === true) return;
+        this.error = false;
+        this.ready = false;
         // this.error =
         this.$stats.getByUsername(username)
           .then((r) => {
