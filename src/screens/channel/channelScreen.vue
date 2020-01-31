@@ -1,7 +1,7 @@
 <template>
   <div id="channel">
 
-    <div v-if="ready">
+    <div v-if="ready && !error">
       <div class="banner" :style="'background-image: url(' + currentChannel.channel.coverPhoto + ');'"></div>
 
       <img class="profile" :src="currentChannel.channel.avatar">
@@ -17,7 +17,7 @@
       <trackList/>
     </div>
 
-    <div v-else style="padding-top: 20px">
+    <div v-else-if="ready == true && error == true" style="padding-top: 20px">
       <p style="font-size: 20px;">{{ $route.params.username }} is not found</p>
     </div>
 
@@ -37,7 +37,7 @@ export default {
         currentChannel: core.stats.currentChannel
       })),
       ready: false,
-      
+      error: false      
     }
   },
   methods: {
@@ -53,13 +53,15 @@ export default {
         console.log('LOAD')
 
         if (this.ready === true) return;
-
+        // this.error =
         this.$stats.getByUsername(username)
           .then((r) => {
             this.ready = true;
-            document.title = username;
+            // document.title = username;
             return resolve()
           }).catch((r) => {
+            this.ready = true;
+            this.error = true;
             // this.$route.push()
           });
       })
