@@ -1,6 +1,7 @@
 <template>
   <div id="Header">
     <div class="container">
+      <img class="logo" src="../assets/logo.svg" @click="$router.push('/')">
       <input placeholder="Notify username" v-model="username" style="margin-right:15px;" type="text" autocomplete="off" v-on:keyup.enter="searchChannel">
       <button @click="searchChannel" :disabled="username === ''" >Search</button>
     </div>
@@ -20,11 +21,7 @@ export default {
   },
   methods: {
     searchChannel() {
-      if (this.$route.params.username == this.username || this.username === '') {
-        console.log('no')
-        return;
-      }
-      // if (this.$router.username.toLowerCase() === this.username.toLowerCase());
+      if (this.$route.params.username == this.username || this.username === '') return;
       this.$router.push({ name: 'channel', params: { username: this.username }});
     }
   }
@@ -42,10 +39,20 @@ export default {
 
   .container {
     margin: 0 auto;
-    height: 50px;
+    height: 55px;
     display: flex;
     justify-content: center;
     align-items: center;
+    .logo {
+      height: 28px;
+      width: 28px;
+      margin: 0 15px;
+      cursor: pointer;
+      transition: transform .1s ease-in-out;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
 
     @media only screen and (min-width: 700px) {
       max-width: 700px;

@@ -20,14 +20,13 @@ export default {
 </script>
 
 <style lang="scss">
+@import "~@fortawesome/fontawesome-pro/css/all.min.css";
 
 // @font-face {
 //   font-family: 'Moniker';
 //   src: url(./assets/fonts/MonikerBasicRegular.otf);
 //   font-style: normal;
 // }
-
-
 
 #app {
   font-family: 'Moniker';

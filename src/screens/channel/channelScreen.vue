@@ -1,6 +1,5 @@
 <template>
   <div id="channel">
-
     <div v-if="ready && !error">
       <div class="banner" :style="'background-image: url(' + currentChannel.channel.coverphoto + ');'"></div>
 
@@ -11,7 +10,7 @@
       class="link"
       style="font-size:24px;padding-top:10px;" 
       @click="to('https://notify.me/' + currentChannel.channel.username)">
-      {{ currentChannel.channel.displayName }}</p>
+      {{ currentChannel.channel.displayname }}</p>
       <!-- <p>{{ new Date(currentChannel.channel.created_at).toLocaleString() }}</p> -->
 
       <trackList/>
@@ -49,13 +48,13 @@ export default {
       return (current - prev);
     },
     async LOAD(username) {
-      return new Promise((resolve, reject) => {
+      return new Promise(async (resolve, reject) => {
         if (this.ready === true) return;
 
         this.error = false;
         this.ready = false;
 
-        this.$stats.getByUsername(username)
+        await this.$stats.getByUsername(username)
           .then((r) => {
             this.ready = true;
             return resolve()
@@ -80,6 +79,7 @@ export default {
   watch: {
     $route(to, from) {
       this.ready = false
+      console.log('test')
       this.LOAD(this.$route.params.username);
       // react to route changes...
     }

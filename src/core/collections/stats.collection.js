@@ -1,14 +1,16 @@
 export default({
   routes: {
-    getByUsername: (request, username) => request.get(`channel/track/username/${username}`),
-    getTop: (request) => request.get(`channel/track/top`),
+    getByUsername: (request, username) => request.get(`channel/username/${username}`),
+    getTop: (request) => request.get(`channel/top`),
   },
   data: {
-    top: [],
-    currentChannel: {}
+    currentChannel: {},
+    top: null
   },
   groups: ['channels', 'tracks'],
+  persist: ['top'],
   actions: {
+
     getByUsername({ routes, stats }, username) {
       console.log('getByUsername')
       return new Promise(async (resolve, reject) => {
@@ -21,10 +23,12 @@ export default({
         });
       });
     },
-    getTop({ routes, stats}) {
-      routes.getTop().then((r) => {
 
+    getTop({ routes, stats }) {
+      routes.getTop().then((r) => {
+        stats.collect(r.data, 'top', { byKeys: true });
       })
     }
+    
   }
 })

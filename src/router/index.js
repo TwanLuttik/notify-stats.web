@@ -17,6 +17,7 @@ const routes = [
     component: () => import('../screens/channel/channelScreen'),
     beforeEnter: async (to, from, next) => {
       document.title = await to.params.username;
+      core.stats.currentChannel = {}
       // await core.stats.getByUsername(to.params.username)
       next();
     }
