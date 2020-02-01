@@ -1,6 +1,3 @@
-# pull the code from the git sevrer
-git pull
-
 # remove dist folder
 rm -rf ./dist/
 
