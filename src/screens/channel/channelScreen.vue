@@ -2,7 +2,7 @@
   <div id="channel">
 
     <div v-if="ready && !error">
-      <div class="banner" :style="'background-image: url(' + currentChannel.channel.coverPhoto + ');'"></div>
+      <div class="banner" :style="'background-image: url(' + currentChannel.channel.coverphoto + ');'"></div>
 
       <img class="profile" :src="currentChannel.channel.avatar">
 
@@ -50,21 +50,19 @@ export default {
     },
     async LOAD(username) {
       return new Promise((resolve, reject) => {
-        console.log('LOAD')
-
         if (this.ready === true) return;
+
         this.error = false;
         this.ready = false;
-        // this.error =
+
         this.$stats.getByUsername(username)
           .then((r) => {
             this.ready = true;
-            // document.title = username;
             return resolve()
           }).catch((r) => {
             this.ready = true;
             this.error = true;
-            // this.$route.push()
+            reject();
           });
       })
 
