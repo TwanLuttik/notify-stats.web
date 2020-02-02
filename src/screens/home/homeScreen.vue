@@ -1,16 +1,32 @@
 <template>
   <div id="homeScreen">
     <h2>Welcome to Notify statistics</h2>
+
+     <img class="image" src="@/assets/images/notify-artwork-1.jpg" />
+     <div class="gradiant"/>
+     <div class="author">
+       <p>Made by </p>
+       <p class="link" @click="$root.to('https://twitter.com/noroiju')">@noroiju</p>
+     </div>
+
+
+
     <div style="display:flex;flex-directin:column;justify-content:center;">
       <p>Made By</p><p class="link" style="padding-left:5px;" @click="to('https://twitter.com/TwanLuttik')">@TwanLuttik</p>
     </div>
 
-    <div style="display:flex;flex-directin:column;justify-content:center;margin-top:30px;">
+    
+    <TopChannels/>
+
+    <br>
+    <br>
+    <br>
+
+    <div style="display:flex;flex-directin:column;justify-content:center;margin:30px 0;">
       <p>If you see any issues send me a dm on</p>
       <p class="link" style="padding-left:5px;" @click="to('https://twitter.com/TwanLuttik')">twitter</p>
     </div> 
 
-    <TopChannels/>
     <!-- <div v-for="(item, i) in top" :key="i">
       {{ item }}
     </div> -->
@@ -46,6 +62,44 @@ export default {
     cursor: pointer;
       color: #476AFF;
     &:hover {
+    }
+  }
+  .image {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: -2;
+    left: 0;
+    right: 0;
+    opacity: 14%;
+    max-height: 1300px;
+
+
+  }
+  .gradiant {
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4990371148459384) 49%, rgba(255,255,255,1) 100%);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    left: 0;
+    height: 1300px;
+  }
+  .author {
+    display: flex;
+    position: absolute;
+    top: 75px;
+    left: 10px;
+    color: gray;
+    font-style: oblique;
+
+    .link {
+      padding-left: 5px;  
+      cursor: pointer;
+      &:hover {
+        color: #476AFF;
+      }
     }
   }
 
