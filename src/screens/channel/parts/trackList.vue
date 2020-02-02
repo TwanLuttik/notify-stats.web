@@ -57,7 +57,6 @@ export default {
 .tracks {
   margin: 90px 0;
   border: solid 2px #476aff;
-  border-radius: 6px;
   .top-bar {
     display: flex;
     background: #476aff;

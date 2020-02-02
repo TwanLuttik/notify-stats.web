@@ -71,10 +71,8 @@ export default {
     z-index: -2;
     left: 0;
     right: 0;
-    opacity: 14%;
+    opacity: 9%;
     max-height: 1300px;
-
-
   }
   .gradiant {
     background: rgb(255,255,255);
