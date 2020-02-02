@@ -71,7 +71,7 @@ export default {
     z-index: -2;
     left: 0;
     right: 0;
-    opacity: 12%;
+    opacity: 0.12;
     max-height: 1300px;
   }
   .gradiant {
