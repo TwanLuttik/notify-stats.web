@@ -2,24 +2,70 @@
   <div id="Header">
     <div class="container">
       <img class="logo" src="../assets/logo.svg" @click="$router.push('/')">
-      <input placeholder="Notify username" v-model="username" style="margin-right:15px;" type="text" autocomplete="off" v-on:keyup.enter="searchChannel">
+      <div class="search-container">
+        <input 
+          @input="SearchSuggestion"
+          @click="searchbarshow = true"
+          placeholder="Notify username" 
+          v-model="username" 
+          style="margin-right:15px;" 
+          class="search-input"
+          type="text" 
+          v-on:keyup.enter="searchChannel">
+        <div 
+          class="suggestion-container" 
+          v-if="searchbarshow && username !== ''" 
+          ref="search" 
+          @mouseenter="searchbar.hovered_over = false"
+          @mouseleave="searchbar.hovered_over = true, searchbarHandler()">
+          <div v-for="(item, i) in search" :key="i">
+            <p @click="searchbarshow = false, $router.push('/channel/' + item.username)">{{ item.username }}</p>
+          </div>
+        </div>
+      </div>
+
       <button @click="searchChannel" :disabled="username === ''" >Search</button>
     </div>
   </div>
 </template>
 
 <script>
+let timer = null;
+
 export default {
   name: 'Header',
   data() {
     return {
-      username: '',
       ...this.mapData({
         currentChannel: 'stats/currentChannel'
-      })
+      }),
+      username: '',
+      search: [],
+      searchbarshow: false,
+      searchbar: {
+        hovered_over: false
+      }
     }
   },
   methods: {
+    searchbarHandler() {
+      setTimeout(() => {
+        if (this.searchbar.hovered_over) this.searchbarshow = false;
+      }, 400)
+      
+    },
+    SearchSuggestion() {
+      if (this.username == '') this.searchbarshow = false;
+      if (timer !== null) return;      
+      timer = setTimeout(async () => {
+        if (!timer) return 
+        this.search = await this.$channel.searchByUsername(this.username);
+        console.log(this.$channel.searchByUsername(this.username))
+        this.searchbarshow = true
+        timer = null;
+      }, 200)
+      
+    },
     searchChannel() {
       if (this.$route.params.username == this.username || this.username === '') return;
       this.$router.push({ name: 'channel', params: { username: this.username }});
@@ -52,6 +98,35 @@ export default {
       &:hover {
         transform: scale(1.1);
       }
+    }
+    .search-container {
+      width: 100%;
+      .suggestion-container {
+        position: absolute;
+        width: fit-content;
+        z-index: 50;
+        background: white;
+        // height: 200px;
+        color: black;
+        top: 44px;
+        width: 300px;
+        border-radius: 0 0 3px 3px;
+        box-shadow: 0 3px 4px 0px #00000012;
+        padding: 3px 0;
+        p {
+          display: flex;
+          align-items: center;
+          padding-left: 5px;
+          height: 30px;
+          margin: 3px 0;
+          cursor: pointer;
+          &:hover {
+            background: rgb(240, 240, 240);
+          }
+        }
+
+      }
+
     }
 
     @media only screen and (min-width: 800px) {

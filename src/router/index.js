@@ -9,7 +9,12 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => import('../screens/home/homeScreen')
+    component: () => import('../screens/home/homeScreen'),
+    beforeEnter: async (to, from, next) => {
+      document.title = 'NotifyStats';
+      core.stats.currentChannel = {}
+      next();
+    }
   },
   {
     path: '/channel/:username',
