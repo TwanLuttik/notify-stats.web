@@ -54,8 +54,6 @@ export default {
     },
     async LOAD(username) {
       return new Promise(async (resolve, reject) => {
-        // this.$stats.currentChannel = {};
-        console.log('LOAD')
         if (this.ready === true) return;
 
         this.error = false;
@@ -75,14 +73,14 @@ export default {
     }
   },
   async mounted() {
-    
     let pathUsername = this.$route.params.username;
     if (this.currentChannel.channel !== undefined) {
-      this.ready = true;
-      return;
+      if (this.currentChannel.channel.username == pathUsername) {
+        this.ready = true;
+        return
+      };
     }
-    
-    if (this.currentChannel.channel == undefined) await this.LOAD(this.$route.params.username);
+    await this.LOAD(this.$route.params.username);
   },
   watch: {
     $route(to, from) {
