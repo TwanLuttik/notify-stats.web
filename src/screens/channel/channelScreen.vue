@@ -17,8 +17,12 @@
       <trackList/>
     </div>
 
-    <div v-else style="padding-top: 20px">
+    <div v-else-if="error === true" style="padding-top: 20px">
       <p style="font-size: 20px;">{{ $route.params.username }} is not found</p>
+    </div>
+
+    <div v-else class="loading">
+      <div class="loading-animation"/>
     </div>
 
   </div>
@@ -50,6 +54,7 @@ export default {
     },
     async LOAD(username) {
       return new Promise(async (resolve, reject) => {
+        // this.$stats.currentChannel = {};
         console.log('LOAD')
         if (this.ready === true) return;
 
@@ -63,20 +68,21 @@ export default {
           }).catch((r) => {
             this.ready = true;
             this.error = true;
-            reject();
+            return reject();
           });
       })
 
     }
   },
   async mounted() {
-    if (this.currentChannel.channel == undefined) await this.LOAD(this.$route.params.username);
     
-    // await this.$on('channelScreen', (username) => {
-    //   console.log('channelScreen', username)
-    //   this.ready = false;
-    //   this.LOAD(username);
-    // })
+    let pathUsername = this.$route.params.username;
+    if (this.currentChannel.channel !== undefined) {
+      this.ready = true;
+      return;
+    }
+    
+    if (this.currentChannel.channel == undefined) await this.LOAD(this.$route.params.username);
   },
   watch: {
     $route(to, from) {
@@ -152,5 +158,20 @@ export default {
       color: #476AFF;
     }
   }
+  .loading { 
+    margin-top: 300px;
+    display: flex;
+    justify-content: center;
+
+  }
+  .loading-animation {
+    height: 20px;
+    width: 20px;
+    border: solid 5px rgb(194, 194, 194);
+    border-radius: 50px;
+    border-left: solid 5px transparent;
+    animation:spin 1s linear infinite;
+  }
+  @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 }
 </style>

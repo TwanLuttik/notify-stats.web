@@ -18,8 +18,13 @@
           ref="search" 
           @mouseenter="searchbar.hovered_over = false"
           @mouseleave="searchbar.hovered_over = true, searchbarHandler()">
-          <div v-for="(item, i) in search" :key="i">
-            <p @click="searchbarshow = false, $router.push('/channel/' + item.username)">{{ item.username }}</p>
+          <div 
+            class="suggestion-item" 
+            v-for="(item, i) in search" 
+            :key="i" 
+            @click="searchbarshow = false, $router.push('/channel/' + item.username)">
+            <p>{{ item.username }}</p>
+            <img :src="item.avatar">
           </div>
         </div>
       </div>
@@ -60,7 +65,6 @@ export default {
       timer = setTimeout(async () => {
         if (!timer) return 
         this.search = await this.$channel.searchByUsername(this.username);
-        console.log(this.$channel.searchByUsername(this.username))
         this.searchbarshow = true
         timer = null;
       }, 200)
@@ -113,17 +117,29 @@ export default {
         border-radius: 0 0 3px 3px;
         box-shadow: 0 3px 4px 0px #00000012;
         padding: 3px 0;
-        p {
+        .suggestion-item {
+          display: flex;
+          justify-content: space-between;
           display: flex;
           align-items: center;
           padding-left: 5px;
           height: 30px;
           margin: 3px 0;
           cursor: pointer;
+          background-position: center;
+          background-size: 101%;
+
+          img {
+            height: 25px;
+            width: 25px;
+            border-radius: 30px;
+            margin-right: 10px;
+          }
           &:hover {
             background: rgb(240, 240, 240);
           }
         }
+       
 
       }
 
