@@ -41,8 +41,8 @@ export default {
   .container-view {
     margin: 0 auto;
     width: 100%;
-    @media only screen and (min-width: 700px) {
-      max-width: 700px;
+    @media only screen and (min-width: 800px) {
+      max-width: 800px;
     }
   }
 }

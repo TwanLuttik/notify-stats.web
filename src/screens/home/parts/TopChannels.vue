@@ -6,7 +6,7 @@
         <img class="avatar" :src="item.avatar">
         <div style="display:flex;flex-direction:column;justify-content: center;">
           <a class="username" @click="$router.push('/channel/' + item.username)">{{ item.displayname }}</a>
-          <a class="link" @click="$root.to('https://notify.me/' + item.username )">notify.me/{{ item.displayname }}</a>
+          <a class="link" @click="$root.to('https://notify.me/' + item.username )">notify.me/{{ item.username }}</a>
         </div>
 
       </div>
