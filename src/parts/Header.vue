@@ -106,7 +106,6 @@ export default {
     .search-container {
       width: 100%;
       .search-input {
-        min-width: 100%;
       }
       .suggestion-container {
         position: absolute;
